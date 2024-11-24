@@ -29,4 +29,5 @@ export default tseslint.config({ ignores: ['dist'] }, eslintConfigPrettier, {
     'no-console': 'error',
     'react/no-array-index-key': 'error',
   },
+  ignores: ['node_modules'],
 });
