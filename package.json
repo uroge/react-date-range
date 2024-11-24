@@ -9,7 +9,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "lint:fix": "eslint --fix .",
+    "preview": "vite preview",
+    "prepare": "husky",
+    "run-if-lockfile-changed": "git diff --quiet HEAD pnpm-lock.yaml || pnpm install --prefer-offline"
   },
   "keywords": [
     "react",
@@ -37,6 +40,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.11.0",
+    "husky": "^9.1.7",
     "prettier": "^3.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
