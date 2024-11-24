@@ -21,4 +21,15 @@ export default defineConfig({
       },
     },
   },
+  optimizeDeps: {
+    esbuildOptions: {
+      tsconfig: './tsconfig.json',
+    },
+  },
+  resolve: {
+    alias: {
+      '@components': '/src/components',
+      '@utils': '/src/components',
+    },
+  },
 });
