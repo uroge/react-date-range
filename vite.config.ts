@@ -28,8 +28,10 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@components': '/src/components',
-      '@utils': '/src/components',
+      '@react-date-range/components': '/src/components',
+      '@react-date-range/utils': '/src/utils',
+      '@react-date-range/styles': '/src/styles',
+      '@react-date-range/types': '/src/types',
     },
   },
 });
