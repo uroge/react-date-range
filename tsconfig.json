@@ -6,7 +6,15 @@
     "declaration": true,
     "declarationDir": "./dist/types",
     "outDir": "./dist",
-    "strict": true
+    "strict": true,
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@react-date-range/components": ["src/components/index.js"],
+      "@react-date-range/utils": ["src/utils/index.js"],
+      "@react-date-range/styles": ["src/styles/index.js"],
+      "@react-date-range/types": ["src/types/index.js"]
+    }
   },
   "files": [],
   "references": [
