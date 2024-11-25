@@ -1,1 +1,2 @@
-export type { CalendarProps, Range } from './calendar/calendarProps';
+export type { CalendarProps } from './calendarProps';
+export type { Range } from './shared';

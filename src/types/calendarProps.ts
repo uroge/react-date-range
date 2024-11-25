@@ -1,4 +1,13 @@
 import { Locale } from 'date-fns';
+import { JSX, ReactNode } from 'react';
+import {
+  AriaLabelsShape,
+  Preview,
+  Range,
+  RangeFocus,
+  ScrollOptions,
+} from './shared';
+import { ClassNames } from './classNames';
 
 export interface CalendarProps {
   /**
@@ -32,7 +41,7 @@ export interface CalendarProps {
    *
    * default: none
    */
-  dayContentRenderer?: ((date: Date) => React.ReactNode) | undefined;
+  dayContentRenderer?: ((date: Date) => ReactNode) | undefined;
   /** default: `d` */
   dayDisplayFormat?: string | undefined;
   /** default: `vertical` */
@@ -95,7 +104,7 @@ export interface CalendarProps {
           mode?: 'set' | 'setYear' | 'setMonth' | 'monthOffset'
         ) => void,
         props: CalendarProps
-      ) => React.JSX.Element)
+      ) => JSX.Element)
     | undefined;
   /** default: none */
   onChange?: ((date: Date) => void) | undefined;
@@ -138,88 +147,3 @@ export interface CalendarProps {
   /** default: none */
   weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | undefined;
 }
-
-export type AriaLabelsShape = {
-  dateInput?: RangeKeyDict | undefined;
-  monthPicker?: string | undefined;
-  yearPicker?: string | undefined;
-  prevButton?: string | undefined;
-  nextButton?: string | undefined;
-};
-
-export type RangeKeyDict = {
-  [key: string]: Range;
-};
-
-export type Range = {
-  startDate?: Date | undefined;
-  endDate?: Date | undefined;
-  color?: string | undefined;
-  key?: string | undefined;
-  autoFocus?: boolean | undefined;
-  disabled?: boolean | undefined;
-  showDateDisplay?: boolean | undefined;
-};
-
-/**
- * Represents which range and step are focused: `[range, rangeStep]`. Common initial value is `[0, 0]`.
- * - `range` represents the index in the list of ranges of the range that's focused
- * - `rangeStep` is which step on the range is focused: `0` for start date and `1` for end date
- */
-export type RangeFocus = [number, 0 | 1];
-
-export type Preview = Pick<Range, 'startDate' | 'endDate' | 'color'>;
-
-export type ClassNames = {
-  dateRangeWrapper?: string | undefined;
-  calendarWrapper?: string | undefined;
-  dateDisplay?: string | undefined;
-  dateDisplayItem?: string | undefined;
-  dateDisplayItemActive?: string | undefined;
-  monthAndYearWrapper?: string | undefined;
-  monthAndYearPickers?: string | undefined;
-  nextPrevButton?: string | undefined;
-  month?: string | undefined;
-  weekDays?: string | undefined;
-  weekDay?: string | undefined;
-  days?: string | undefined;
-  day?: string | undefined;
-  dayNumber?: string | undefined;
-  dayPassive?: string | undefined;
-  dayToday?: string | undefined;
-  dayStartOfWeek?: string | undefined;
-  dayEndOfWeek?: string | undefined;
-  daySelected?: string | undefined;
-  dayDisabled?: string | undefined;
-  dayStartOfMonth?: string | undefined;
-  dayEndOfMonth?: string | undefined;
-  dayWeekend?: string | undefined;
-  dayStartPreview?: string | undefined;
-  dayInPreview?: string | undefined;
-  dayEndPreview?: string | undefined;
-  dayHovered?: string | undefined;
-  dayActive?: string | undefined;
-  inRange?: string | undefined;
-  endEdge?: string | undefined;
-  startEdge?: string | undefined;
-  prevButton?: string | undefined;
-  nextButton?: string | undefined;
-  selected?: string | undefined;
-  months?: string | undefined;
-  monthPicker?: string | undefined;
-  yearPicker?: string | undefined;
-  dateDisplayWrapper?: string | undefined;
-  definedRangesWrapper?: string | undefined;
-  staticRanges?: string | undefined;
-  staticRange?: string | undefined;
-  inputRanges?: string | undefined;
-  inputRange?: string | undefined;
-  inputRangeInput?: string | undefined;
-  dateRangePickerWrapper?: string | undefined;
-  staticRangeLabel?: string | undefined;
-  staticRangeSelected?: string | undefined;
-  monthName?: string | undefined;
-  infiniteMonths?: string | undefined;
-  monthsVertical?: string | undefined;
-  monthsHorizontal?: string | undefined;
-};
