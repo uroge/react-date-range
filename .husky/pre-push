@@ -1,0 +1,4 @@
+echo "Pre push..."
+pnpm run-if-lockfile-changed
+pnpm lint
+pnpm build

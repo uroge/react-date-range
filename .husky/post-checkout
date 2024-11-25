@@ -1,0 +1,2 @@
+echo "Post merge..."
+pnpm run-if-lockfile-changed
