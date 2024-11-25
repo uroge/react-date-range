@@ -21,17 +21,4 @@ export default defineConfig({
       },
     },
   },
-  optimizeDeps: {
-    esbuildOptions: {
-      tsconfig: './tsconfig.json',
-    },
-  },
-  resolve: {
-    alias: {
-      '@react-date-range/components': '/src/components',
-      '@react-date-range/utils': '/src/utils',
-      '@react-date-range/styles': '/src/styles',
-      '@react-date-range/types': '/src/types',
-    },
-  },
 });
