@@ -27,6 +27,7 @@ export default tseslint.config({ ignores: ['dist'] }, eslintConfigPrettier, {
     'no-undef': 'error',
     'no-console': 'error',
     'react/no-array-index-key': 'error',
+    'typescript-eslint/no-unused-vars': 'warn',
   },
   ignores: ['node_modules', 'dist'],
 });
