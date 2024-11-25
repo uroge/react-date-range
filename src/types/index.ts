@@ -1,1 +1,1 @@
-export type { CalendarProps } from './calendar/calendarProps';
+export type { CalendarProps, Range } from './calendar/calendarProps';
