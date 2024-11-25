@@ -2,10 +2,18 @@ import React, {
   DetailedHTMLProps,
   InputHTMLAttributes,
   useCallback,
+  useRef,
   useState,
 } from 'react';
-import { format, FormatOptions, isValid, parse, ParseOptions } from 'date-fns';
+import {
+  format,
+  FormatOptions,
+  isValid as isValidDate,
+  parse,
+  ParseOptions,
+} from 'date-fns';
 import classnames from 'classnames';
+import './dateInput.css';
 
 const formatDate = ({
   value,
@@ -16,7 +24,7 @@ const formatDate = ({
   dateDisplayFormat: string;
   dateOptions: FormatOptions;
 }) => {
-  if (value && isValid(value)) {
+  if (value && isValidDate(new Date(value))) {
     return format(value, dateDisplayFormat, dateOptions);
   }
 
@@ -53,54 +61,61 @@ export const DateInput: React.FC<DateInputProps> = ({
   ariaLabel,
   onFocus,
 }) => {
-  const [isInvalid, setIsInvalid] = useState(false);
-  const [hasChanged, setHasChanged] = useState(false);
-  const [currentValue, setCurrentValue] = useState(() =>
+  const [isValid, setValid] = useState(true);
+  const initialValueRef = useRef(
     formatDate({ dateDisplayFormat, dateOptions, value })
   );
+  const [currentValue, setCurrentValue] = useState(initialValueRef.current);
+  const hasChanged = initialValueRef.current !== currentValue;
+  // TODO: usePrevious(currentValue) and derive hasChanged based on that
+  // in order on to call update when the value is the same as the last time
 
-  const update = useCallback((value: string | undefined) => {
-    if (isInvalid || !hasChanged || !value) {
-      return;
-    }
+  const update = useCallback(
+    (newValue: string | undefined) => {
+      if (isValid || !hasChanged || !newValue) {
+        return;
+      }
 
-    const parsed = parse(
-      value,
-      dateDisplayFormat,
-      new Date(),
-      dateOptions as ParseOptions
-    );
+      const parsed = parse(
+        newValue,
+        dateDisplayFormat,
+        new Date(),
+        dateOptions as ParseOptions
+      );
 
-    if (isValid(parsed)) {
-      setHasChanged(false);
-      onChange(parsed);
-    } else {
-      setIsInvalid(true);
-    }
-  }, []);
+      if (isValidDate(parsed)) {
+        onChange(parsed);
+      } else {
+        setValid(false);
+      }
+    },
+    [dateDisplayFormat, dateOptions, hasChanged, isValid, onChange]
+  );
 
-  const onKeyDown = useCallback((e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      update(currentValue);
-    }
-  }, []);
+  const onKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === 'Enter') {
+        update(currentValue);
+      }
+    },
+    [currentValue, update]
+  );
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setCurrentValue(e.target.value);
-    setHasChanged(true);
-    setIsInvalid(false);
+    setValid(true);
   }, []);
 
   const onBlur = useCallback(() => {
     update(currentValue);
-  }, []);
+  }, [currentValue, update]);
 
   return (
     <span className={classnames('rdrDateInput', className)}>
       <input
         readOnly={readOnly}
         disabled={disabled}
-        value={value}
+        value={currentValue}
         placeholder={placeholder}
         aria-label={ariaLabel}
         onKeyDown={onKeyDown}
@@ -108,7 +123,7 @@ export const DateInput: React.FC<DateInputProps> = ({
         onBlur={onBlur}
         onFocus={onFocus}
       />
-      {isInvalid && <span className="rdrWarning">&#9888;</span>}
+      {!isValid && <span className="rdrWarning">&#9888;</span>}
     </span>
   );
 };
