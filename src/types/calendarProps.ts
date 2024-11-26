@@ -9,6 +9,8 @@ import {
 } from './shared';
 import { ClassNames } from './classNames';
 
+export type ShownDateMode = 'set' | 'setYear' | 'setMonth' | 'monthOffset';
+
 export interface CalendarProps {
   /**
    * Custom accessibility aria labels for elements
@@ -101,7 +103,7 @@ export interface CalendarProps {
         currFocusedDate: Date,
         changeShownDate: (
           value: Date | number | string,
-          mode?: 'set' | 'setYear' | 'setMonth' | 'monthOffset'
+          mode?: ShownDateMode
         ) => void,
         props: CalendarProps
       ) => JSX.Element)

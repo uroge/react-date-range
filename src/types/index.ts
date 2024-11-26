@@ -1,2 +1,3 @@
-export type { CalendarProps } from './calendarProps';
-export type { Range } from './shared';
+export type { CalendarProps, ShownDateMode } from './calendarProps';
+export type { Range, AriaLabelsShape } from './shared';
+export type { ClassNames } from './classNames';
