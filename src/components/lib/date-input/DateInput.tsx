@@ -40,7 +40,7 @@ type InputProps = DetailedHTMLProps<
 >;
 
 type DateInputProps = {
-  onChange: (value: Date | undefined) => void;
+  onChange: (value: Date) => void;
   value: Date | undefined;
   dateDisplayFormat: string;
   dateOptions: FormatOptions;
