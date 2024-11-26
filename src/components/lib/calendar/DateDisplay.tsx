@@ -18,7 +18,7 @@ type DateDisplayProps = {
   dateOptions: { locale: Locale };
   onStartDateFocus: (index: number) => void;
   onEndDateFocus: (index: number) => void;
-  onDateInputChange: () => void;
+  onDateInputChange: (date: Date) => void;
 };
 
 export const DateDisplay: FC<DateDisplayProps> = ({
