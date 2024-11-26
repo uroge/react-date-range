@@ -17,6 +17,7 @@ export default tseslint.config({ ignores: ['dist'] }, eslintConfigPrettier, {
     'react-hooks': reactHooks,
     'react-refresh': reactRefresh,
     react: react,
+    'typescript-eslint': tseslint,
   },
   rules: {
     ...reactHooks.configs.recommended.rules,
@@ -27,6 +28,8 @@ export default tseslint.config({ ignores: ['dist'] }, eslintConfigPrettier, {
     'no-undef': 'error',
     'no-console': 'error',
     'react/no-array-index-key': 'error',
+    '@/no-unused-vars': 'warn',
+    'react-hooks/exhaustive-deps': 'warn',
   },
   ignores: ['node_modules', 'dist'],
 });
