@@ -13,7 +13,7 @@ import {
   ParseOptions,
 } from 'date-fns';
 import classnames from 'classnames';
-import './dateInput.css';
+import './dateInput.scss';
 
 const formatDate = ({
   value,
@@ -72,10 +72,9 @@ export const DateInput: React.FC<DateInputProps> = ({
 
   const update = useCallback(
     (newValue: string | undefined) => {
-      if (isValid || !hasChanged || !newValue) {
+      if (!isValid || !hasChanged || !newValue) {
         return;
       }
-
       const parsed = parse(
         newValue,
         dateDisplayFormat,
