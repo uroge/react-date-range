@@ -10,10 +10,11 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "@react-date-range/components": ["src/components/index.js"],
-      "@react-date-range/utils": ["src/utils/index.js"],
-      "@react-date-range/styles": ["src/styles/index.js"],
-      "@react-date-range/types": ["src/types/index.js"]
+      "@react-date-range/components": ["src/components/index.ts"],
+      "@react-date-range/utils": ["src/utils/index.ts"],
+      "@react-date-range/styles": ["src/styles/index.ts"],
+      "@react-date-range/types": ["src/types/index.ts"],
+      "@react-date-range/locale": ["src/locale/index.ts"]
     }
   },
   "files": [],

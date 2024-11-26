@@ -32,6 +32,7 @@ export default defineConfig({
       '@react-date-range/utils': '/src/utils',
       '@react-date-range/styles': '/src/styles',
       '@react-date-range/types': '/src/types',
+      '@react-date-range/locale': '/src/locale',
     },
   },
 });
