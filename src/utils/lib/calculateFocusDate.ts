@@ -11,7 +11,10 @@ type TargetInterval = {
   end?: Date;
 };
 
-export function calculateFocusDate(currentFocusedDate: Date, config: Config) {
+export function calculateFocusDate(
+  currentFocusedDate: Date | null,
+  config: Config
+) {
   const { shownDate, date, months, ranges, focusedRange, displayMode } = config;
 
   // Find primary date according the config
