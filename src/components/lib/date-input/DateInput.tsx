@@ -1,9 +1,12 @@
-import React, {
+import {
   DetailedHTMLProps,
   InputHTMLAttributes,
   useCallback,
   useRef,
   useState,
+  FC,
+  ChangeEvent,
+  KeyboardEvent,
 } from 'react';
 import {
   format,
@@ -49,7 +52,7 @@ type DateInputProps = {
   onFocus?: InputProps['onFocus'];
 };
 
-export const DateInput: React.FC<DateInputProps> = ({
+export const DateInput: FC<DateInputProps> = ({
   onChange,
   value,
   dateDisplayFormat,
@@ -92,7 +95,7 @@ export const DateInput: React.FC<DateInputProps> = ({
   );
 
   const onKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
+    (e: KeyboardEvent) => {
       if (e.key === 'Enter') {
         update(currentValue);
       }
@@ -100,7 +103,7 @@ export const DateInput: React.FC<DateInputProps> = ({
     [currentValue, update]
   );
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setCurrentValue(e.target.value);
     setValid(true);
   }, []);

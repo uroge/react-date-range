@@ -1,1 +1,1 @@
-export { DateInput } from './lib/DateInput';
+export { DateInput } from './lib/date-input/DateInput';
