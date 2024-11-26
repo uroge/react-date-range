@@ -37,3 +37,5 @@ export type Range = {
 export type RangeFocus = [number, 0 | 1];
 
 export type Preview = Pick<Range, 'startDate' | 'endDate' | 'color'>;
+
+export type Styles = Record<string, string>;

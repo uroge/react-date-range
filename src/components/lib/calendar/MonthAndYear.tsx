@@ -1,5 +1,9 @@
 import { ChangeEvent, FC, useCallback, useMemo } from 'react';
-import { AriaLabelsShape, ShownDateMode } from '@react-date-range/types';
+import {
+  AriaLabelsShape,
+  ShownDateMode,
+  Styles,
+} from '@react-date-range/types';
 import classnames from 'classnames';
 import {
   addMonths,
@@ -15,7 +19,7 @@ import {
 type MonthAndYearProps = {
   maxDate: Date;
   minDate: Date;
-  styles: Record<string, string>;
+  styles: Styles;
   showMonthArrow: boolean;
   ariaLabels: AriaLabelsShape;
   showMonthAndYearPickers?: boolean;

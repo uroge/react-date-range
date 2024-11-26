@@ -1,3 +1,4 @@
+import { Styles } from '@react-date-range/types';
 import {
   eachDayOfInterval,
   endOfWeek,
@@ -9,7 +10,7 @@ import { FC } from 'react';
 
 type WeekDaysProps = {
   dateOptions: { locale: Locale };
-  styles: Record<string, string>;
+  styles: Styles;
   weekdayDisplayFormat: string;
 };
 
