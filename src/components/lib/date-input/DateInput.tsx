@@ -23,7 +23,7 @@ const formatDate = ({
   dateDisplayFormat,
   dateOptions,
 }: {
-  value: string | undefined;
+  value: Date | undefined;
   dateDisplayFormat: string;
   dateOptions: FormatOptions;
 }) => {
@@ -41,7 +41,7 @@ type InputProps = DetailedHTMLProps<
 
 type DateInputProps = {
   onChange: (value: Date | undefined) => void;
-  value: string | undefined;
+  value: Date | undefined;
   dateDisplayFormat: string;
   dateOptions: FormatOptions;
   className?: string;
