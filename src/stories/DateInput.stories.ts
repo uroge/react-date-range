@@ -21,7 +21,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    value: new Date().toISOString(),
+    value: new Date(),
     onChange: fn(),
     dateDisplayFormat: 'dd/MM/yyyy',
     dateOptions: {
