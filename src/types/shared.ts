@@ -1,3 +1,5 @@
+import { Locale } from 'date-fns';
+
 export type ScrollOptions = {
   enabled?: boolean | undefined;
   calendarWidth?: number | undefined;
@@ -27,6 +29,9 @@ export type Range = {
   autoFocus?: boolean | undefined;
   disabled?: boolean | undefined;
   showDateDisplay?: boolean | undefined;
+  isStartEdge?: boolean;
+  isEndEdge?: boolean;
+  isInRange?: boolean;
 };
 
 /**
@@ -39,3 +44,11 @@ export type RangeFocus = [number, 0 | 1];
 export type Preview = Pick<Range, 'startDate' | 'endDate' | 'color'>;
 
 export type Styles = Record<string, string>;
+
+export type Drag = {
+  status: boolean;
+  range: Partial<{ startDate: Date | null; endDate: Date | null }>;
+  disablePreview: boolean;
+};
+
+export type DateOptions = { locale: Locale };
